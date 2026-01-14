@@ -7,7 +7,7 @@ const featureRows = [
   {
     title: "Trade with conviction",
     description:
-      "Place buy and sell orders on entities you believe will rise or fall in public confidence. Your portfolio reflects your ability to predict what matters next.",
+      "Place buy and sell orders on entities you believe will rise or fall in public sentiment. Your portfolio reflects your ability to predict what matters next.",
     icon: TrendingUp,
     visual: "left",
   },

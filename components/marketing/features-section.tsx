@@ -50,29 +50,54 @@ export function FeaturesSection() {
         />
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
         >
-          {features.map((feature, i) => (
-            <BentoTile
-              key={i}
-              colSpan={feature.colSpan}
-              delay={i * 0.1}
-            >
-              <div className="flex flex-col h-full">
-                <div className="p-2 rounded-lg bg-primary/10 w-fit mb-4">
-                  <feature.icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
+          {/* First row: 3 items */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+            {features.slice(0, 3).map((feature, i) => (
+              <BentoTile
+                key={i}
+                colSpan={feature.colSpan}
+                delay={i * 0.1}
+              >
+                <div className="flex flex-col h-full">
+                  <div className="p-2 rounded-lg bg-primary/10 w-fit mb-4">
+                    <feature.icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            </BentoTile>
-          ))}
+              </BentoTile>
+            ))}
+          </div>
+
+          {/* Second row: 2 centered items */}
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
+              {features.slice(3).map((feature, i) => (
+                <BentoTile
+                  key={i + 3}
+                  colSpan={feature.colSpan}
+                  delay={(i + 3) * 0.1}
+                >
+                  <div className="flex flex-col h-full">
+                    <div className="p-2 rounded-lg bg-primary/10 w-fit mb-4">
+                      <feature.icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </BentoTile>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -40,9 +40,18 @@ export function HeroSection() {
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif leading-tight tracking-tight">
+            {/* App Name */}
+            <motion.h1
+              className="text-6xl md:text-7xl lg:text-8xl font-serif font-bold leading-none tracking-tight"
+              variants={fadeUp}
+            >
+              Moro
+            </motion.h1>
+
+            {/* Tagline */}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif leading-tight tracking-tight">
               <span className="block overflow-hidden">
                 <motion.span
                   className="block"
@@ -65,7 +74,7 @@ export function HeroSection() {
                   today
                 </motion.span>
               </span>
-            </h1>
+            </h2>
 
             <motion.p
               className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
