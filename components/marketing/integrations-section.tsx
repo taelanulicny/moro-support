@@ -25,8 +25,8 @@ const integrations = [
 
 export function IntegrationsSection() {
   return (
-    <section className="py-24 px-6 bg-secondary/30">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 md:py-24 px-6 bg-secondary/30">
+      <div className="max-w-6xl mx-auto">
         <motion.p
           className="text-center text-sm text-muted-foreground uppercase tracking-wider mb-8"
           initial={{ opacity: 0, y: 20 }}

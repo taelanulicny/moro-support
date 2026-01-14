@@ -1,83 +1,85 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { TrendingUp, Users, Zap, BarChart3, MessageSquare, Target } from "lucide-react"
+import { SectionHeader } from "./section-header"
+import { BentoTile } from "./bento-tile"
+import { staggerContainer, staggerItem } from "@/lib/motion"
+import { motion } from "framer-motion"
 
 const features = [
   {
     icon: TrendingUp,
     title: "Real-time Trading",
     description: "Buy and sell confidence in real-time as sentiment shifts across the platform.",
+    colSpan: 1 as const,
   },
   {
     icon: Users,
     title: "Social Layer",
     description: "Follow traders, share opinions, and engage with the community around every trade.",
+    colSpan: 1 as const,
   },
   {
     icon: Zap,
     title: "AI-Powered Discovery",
     description: "Discover trending entities and get personalized recommendations based on your interests.",
+    colSpan: 2 as const,
   },
   {
     icon: BarChart3,
     title: "Portfolio Tracking",
     description: "Monitor your performance, track your wins, and build your reputation as a trader.",
+    colSpan: 1 as const,
   },
   {
     icon: MessageSquare,
     title: "Rich Conversations",
     description: "Discuss, debate, and share reasoning behind your trades with the community.",
+    colSpan: 1 as const,
   },
   {
     icon: Target,
     title: "Category Exploration",
     description: "Browse by category—tech, culture, politics, sports—and find what matters to you.",
+    colSpan: 1 as const,
   },
 ]
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-24 px-6 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Everything you need to trade confidence
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A complete platform that combines trading, social interaction, and discovery in one seamless experience.
-          </p>
-        </motion.div>
+    <section id="features" className="py-20 md:py-24 px-6 bg-background">
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader
+          eyebrow="Features"
+          title="Everything you need to trade confidence"
+          subtitle="A complete platform that combines trading, social interaction, and discovery in one seamless experience."
+        />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
           {features.map((feature, i) => (
-            <motion.div
+            <BentoTile
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              colSpan={feature.colSpan}
+              delay={i * 0.1}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <feature.icon className="w-10 h-10 text-primary mb-4" />
-                  <CardTitle>{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </motion.div>
+              <div className="flex flex-col h-full">
+                <div className="p-2 rounded-lg bg-primary/10 w-fit mb-4">
+                  <feature.icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            </BentoTile>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

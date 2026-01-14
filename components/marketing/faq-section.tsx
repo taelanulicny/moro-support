@@ -1,12 +1,12 @@
 "use client"
 
-import { motion } from "framer-motion"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { SectionHeader } from "./section-header"
 
 const faqs = [
   {
@@ -53,21 +53,12 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section id="faq" className="py-24 px-6 bg-secondary/30">
+    <section id="faq" className="py-20 md:py-24 px-6 bg-secondary/30">
       <div className="max-w-3xl mx-auto">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Frequently asked questions
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            Everything you need to know about Moro
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Frequently asked questions"
+          subtitle="Everything you need to know about Moro"
+        />
 
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq, i) => (

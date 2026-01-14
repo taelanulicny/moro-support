@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Play } from "lucide-react"
+import { fadeUp, slideInRight, textReveal } from "@/lib/motion"
 
 export function HeroSection() {
   const searchParams = useSearchParams()
@@ -25,35 +26,50 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-24 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-20 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
+      
+      {/* Subtle radial glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-6xl mx-auto w-full">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Text Content */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
             className="space-y-8"
           >
-            <motion.h1
-              className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-            >
-              Trade confidence,
-              <br />
-              <span className="text-primary">not money</span>
-            </motion.h1>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif leading-tight tracking-tight">
+              <span className="block overflow-hidden">
+                <motion.span
+                  className="block"
+                  variants={textReveal}
+                  initial="hidden"
+                  animate="visible"
+                  custom={0}
+                >
+                  Trade confidence,
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden">
+                <motion.span
+                  className="block text-primary"
+                  variants={textReveal}
+                  initial="hidden"
+                  animate="visible"
+                  custom={1}
+                >
+                  not money
+                </motion.span>
+              </span>
+            </h1>
 
             <motion.p
-              className="text-xl text-muted-foreground max-w-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
+              variants={fadeUp}
             >
               Moro is a social stock market where people, ideas, trends, and
               narratives are traded based on what the crowd believes will matter
@@ -62,14 +78,12 @@ export function HeroSection() {
 
             <motion.div
               className="flex flex-col sm:flex-row gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              variants={fadeUp}
             >
               <Button
                 size="lg"
                 onClick={scrollToWaitlist}
-                className="text-lg px-8 py-6"
+                className="rounded-full"
               >
                 Join waitlist
               </Button>
@@ -78,9 +92,9 @@ export function HeroSection() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="text-lg px-8 py-6"
+                    className="rounded-full"
                   >
-                    <Play className="w-5 h-5 mr-2" />
+                    <Play className="w-4 h-4 mr-2" />
                     View demo
                   </Button>
                 </DialogTrigger>
@@ -97,12 +111,12 @@ export function HeroSection() {
 
           {/* Right: Product Mock */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            initial="hidden"
+            animate="visible"
+            variants={slideInRight}
             className="relative"
           >
-            <div className="relative bg-card border border-border rounded-2xl p-6 shadow-2xl">
+            <div className="relative bg-card border border-border rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
               {/* Mock UI Cards */}
               <div className="space-y-4">
                 <div className="bg-secondary rounded-lg p-4 h-24 flex items-center justify-between">

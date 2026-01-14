@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Quote } from "lucide-react"
+import { SectionHeader } from "./section-header"
+import { staggerContainer, staggerItem } from "@/lib/motion"
 
 const testimonials = [
   {
@@ -27,35 +29,26 @@ const testimonials = [
 
 export function SocialProofSection() {
   return (
-    <section className="py-24 px-6 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Join early traders building the future
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            See what others are saying about Moro
-          </p>
-        </motion.div>
+    <section className="py-20 md:py-24 px-6 bg-background">
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader
+          title="Join early traders building the future"
+          subtitle="See what others are saying about Moro"
+        />
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <motion.div
+          className="grid md:grid-cols-3 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
           {testimonials.map((testimonial, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
+            <motion.div key={i} variants={staggerItem}>
               <Card className="h-full">
                 <CardContent className="pt-6">
-                  <Quote className="w-8 h-8 text-primary mb-4" />
-                  <p className="text-muted-foreground mb-6">
+                  <Quote className="w-6 h-6 text-primary mb-4" strokeWidth={1.5} />
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
                     {testimonial.quote}
                   </p>
                   <div>
@@ -68,7 +61,7 @@ export function SocialProofSection() {
               </Card>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -14,7 +14,7 @@ export function FinalCTASection() {
   }
 
   return (
-    <section id="waitlist" className="py-24 px-6 bg-background">
+    <section id="waitlist" className="py-20 md:py-24 px-6 bg-background">
       <div className="max-w-4xl mx-auto">
         <motion.div
           className="text-center mb-12"
@@ -22,10 +22,10 @@ export function FinalCTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-4">
             Ready to trade confidence?
           </h2>
-          <p className="text-xl text-muted-foreground mb-8">
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
             Join the waitlist and be among the first to experience Moro. Share
             your referral code to move up in line.
           </p>

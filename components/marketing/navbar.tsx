@@ -28,53 +28,63 @@ export function Navbar() {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-6xl transition-all duration-300 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border"
-          : "bg-transparent"
+          ? "bg-background/40 backdrop-blur-xl border border-border rounded-full shadow-lg"
+          : "bg-background/20 backdrop-blur-md border border-border/50 rounded-full"
       }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.3 }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="px-6 py-3">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-foreground">
+          <Link
+            href="/"
+            className="text-xl font-bold text-foreground font-serif"
+          >
             Moro
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-1 relative">
             <Link
               href="#features"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="relative px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full"
             >
               Features
             </Link>
             <Link
               href="#how-it-works"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="relative px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full"
             >
               How it works
             </Link>
             <Link
               href="#faq"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="relative px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full"
             >
               FAQ
             </Link>
-            <Button onClick={scrollToWaitlist}>Join waitlist</Button>
+            <Button
+              onClick={scrollToWaitlist}
+              size="sm"
+              className="ml-2 rounded-full"
+            >
+              Join waitlist
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5" />
             )}
           </button>
         </div>
@@ -87,31 +97,34 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-border bg-background"
+            className="md:hidden mt-2 mx-2 mb-2 rounded-2xl border border-border bg-background/95 backdrop-blur-xl"
           >
-            <div className="px-6 py-4 space-y-4">
+            <div className="px-6 py-4 space-y-2">
               <Link
                 href="#features"
-                className="block text-sm text-muted-foreground hover:text-foreground"
+                className="block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Features
               </Link>
               <Link
                 href="#how-it-works"
-                className="block text-sm text-muted-foreground hover:text-foreground"
+                className="block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 How it works
               </Link>
               <Link
                 href="#faq"
-                className="block text-sm text-muted-foreground hover:text-foreground"
+                className="block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 FAQ
               </Link>
-              <Button onClick={scrollToWaitlist} className="w-full">
+              <Button
+                onClick={scrollToWaitlist}
+                className="w-full mt-2 rounded-lg"
+              >
                 Join waitlist
               </Button>
             </div>

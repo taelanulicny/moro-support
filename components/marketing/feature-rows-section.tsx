@@ -29,8 +29,8 @@ const featureRows = [
 
 export function FeatureRowsSection() {
   return (
-    <section id="how-it-works" className="py-24 px-6 bg-secondary/30">
-      <div className="max-w-7xl mx-auto space-y-32">
+    <section id="how-it-works" className="py-20 md:py-24 px-6 bg-secondary/30">
+      <div className="max-w-6xl mx-auto space-y-24 md:space-y-32">
         {featureRows.map((row, i) => (
           <motion.div
             key={i}
@@ -47,9 +47,11 @@ export function FeatureRowsSection() {
                 row.visual === "right" ? "lg:col-start-2" : ""
               }`}
             >
-              <row.icon className="w-12 h-12 text-primary" />
-              <h3 className="text-3xl md:text-4xl font-bold">{row.title}</h3>
-              <p className="text-lg text-muted-foreground">
+              <div className="p-3 rounded-lg bg-primary/10 w-fit">
+                <row.icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
+              </div>
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold">{row.title}</h3>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                 {row.description}
               </p>
             </div>
