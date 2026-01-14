@@ -27,18 +27,19 @@ export function Navbar() {
   }
 
   return (
-    <motion.nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-6xl transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/40 backdrop-blur-xl border border-border rounded-full shadow-lg"
-          : "bg-background/20 backdrop-blur-md border border-border/50 rounded-full"
-      }`}
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div className="px-6 py-3">
-        <div className="flex items-center justify-center gap-8">
+    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center pointer-events-none">
+      <motion.nav
+        className={`w-[calc(100%-2rem)] max-w-6xl transition-all duration-300 pointer-events-auto ${
+          isScrolled
+            ? "bg-background/40 backdrop-blur-xl border border-border rounded-full shadow-lg"
+            : "bg-background/20 backdrop-blur-md border border-border/50 rounded-full"
+        }`}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="px-6 py-3">
+          <div className="flex items-center justify-center gap-8 relative">
           <Link
             href="/"
             className="text-xl font-bold text-foreground font-serif"
@@ -47,7 +48,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-1 relative">
+          <div className="hidden md:flex items-center gap-1">
             <Link
               href="#features"
               className="relative px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full"
@@ -77,7 +78,7 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden absolute right-6 p-2 text-muted-foreground hover:text-foreground transition-colors"
+            className="md:hidden absolute right-0 p-2 text-muted-foreground hover:text-foreground transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -130,8 +131,9 @@ export function Navbar() {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
-    </motion.nav>
+        </AnimatePresence>
+      </motion.nav>
+    </div>
   )
 }
 

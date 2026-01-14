@@ -1,6 +1,6 @@
 "use client"
 
-import { TrendingUp, Users, Zap, BarChart3, MessageSquare, Target } from "lucide-react"
+import { TrendingUp, Users, BarChart3, MessageSquare, Target } from "lucide-react"
 import { SectionHeader } from "./section-header"
 import { BentoTile } from "./bento-tile"
 import { staggerContainer, staggerItem } from "@/lib/motion"
@@ -18,12 +18,6 @@ const features = [
     title: "Social Layer",
     description: "Follow traders, share opinions, and engage with the community around every trade.",
     colSpan: 1 as const,
-  },
-  {
-    icon: Zap,
-    title: "AI-Powered Discovery",
-    description: "Discover trending entities and get personalized recommendations based on your interests.",
-    colSpan: 2 as const,
   },
   {
     icon: BarChart3,
