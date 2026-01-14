@@ -23,10 +23,25 @@ import {
 import { useToast } from "@/components/ui/use-toast"
 import { Search, Download, LogOut, Trash2, ChevronLeft, ChevronRight } from "lucide-react"
 
+type WaitlistEntry = {
+  id: string
+  email: string
+  fullName: string | null
+  role: string | null
+  company: string | null
+  referralCode: string
+  referralCount: number
+  createdAt: Date
+  referredBy: {
+    email: string
+    fullName: string | null
+  } | null
+}
+
 export function WaitlistTable() {
   const router = useRouter()
   const { toast } = useToast()
-  const [entries, setEntries] = useState<any[]>([])
+  const [entries, setEntries] = useState<WaitlistEntry[]>([])
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
@@ -95,7 +110,7 @@ export function WaitlistTable() {
   const handleExport = () => {
     const csv = [
       ["Email", "Name", "Role", "Company", "Referral Code", "Referred By", "Referrals", "Created At"],
-      ...entries.map((e) => [
+      ...entries.map((e: WaitlistEntry) => [
         e.email,
         e.fullName || "",
         e.role || "",
@@ -106,7 +121,7 @@ export function WaitlistTable() {
         e.createdAt.toISOString(),
       ]),
     ]
-      .map((row) => row.map((cell) => `"${cell}"`).join(","))
+      .map((row: string[]) => row.map((cell: string) => `"${cell}"`).join(","))
       .join("\n")
 
     const blob = new Blob([csv], { type: "text/csv" })
@@ -188,7 +203,7 @@ export function WaitlistTable() {
               <Input
                 placeholder="Search by email, name, or company..."
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
                 className="pl-10"
               />
             </div>
@@ -220,7 +235,7 @@ export function WaitlistTable() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {entries.map((entry) => (
+                    {entries.map((entry: WaitlistEntry) => (
                       <TableRow key={entry.id}>
                         <TableCell className="font-medium">{entry.email}</TableCell>
                         <TableCell>{entry.fullName || "-"}</TableCell>
@@ -274,7 +289,7 @@ export function WaitlistTable() {
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                    onClick={() => setPage((p: number) => Math.max(1, p - 1))}
                     disabled={page === 1}
                   >
                     <ChevronLeft className="w-4 h-4" />
@@ -287,7 +302,7 @@ export function WaitlistTable() {
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                    onClick={() => setPage((p: number) => Math.min(totalPages, p + 1))}
                     disabled={page === totalPages}
                   >
                     <ChevronRight className="w-4 h-4" />
