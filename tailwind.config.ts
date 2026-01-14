@@ -19,10 +19,10 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         serif: ["var(--font-serif)", "Georgia", "serif"],
         display: ["var(--font-serif)", "Georgia", "serif"],
-        mono: ["ui-monospace", "SFMono-Regular", "monospace"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       colors: {
         border: "rgb(var(--border))",

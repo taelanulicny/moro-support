@@ -51,7 +51,7 @@ export function HeroSection() {
                   animate="visible"
                   custom={0}
                 >
-                  Trade confidence,
+                  Know tomorrow,
                 </motion.span>
               </span>
               <span className="block overflow-hidden">
@@ -62,7 +62,7 @@ export function HeroSection() {
                   animate="visible"
                   custom={1}
                 >
-                  not money
+                  today
                 </motion.span>
               </span>
             </h1>

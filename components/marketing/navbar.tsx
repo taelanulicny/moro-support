@@ -38,7 +38,7 @@ export function Navbar() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="px-6 py-3">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-center gap-8">
           <Link
             href="/"
             className="text-xl font-bold text-foreground font-serif"
@@ -77,7 +77,7 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+            className="md:hidden absolute right-6 p-2 text-muted-foreground hover:text-foreground transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
