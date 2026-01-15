@@ -26,7 +26,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">Disclaimer</h2>
             <p className="text-muted-foreground">
-              The materials on Moro are provided on an 'as is' basis. Moro makes
+              The materials on Moro are provided on an &apos;as is&apos; basis. Moro makes
               no warranties, expressed or implied, and hereby disclaims and
               negates all other warranties.
             </p>
