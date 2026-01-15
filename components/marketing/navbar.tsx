@@ -18,12 +18,16 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const scrollToWaitlist = () => {
-    const waitlistSection = document.getElementById("waitlist")
-    if (waitlistSection) {
-      waitlistSection.scrollIntoView({ behavior: "smooth" })
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId)
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" })
     }
     setIsMobileMenuOpen(false)
+  }
+
+  const scrollToWaitlist = () => {
+    scrollToSection("waitlist")
   }
 
   return (
@@ -49,24 +53,24 @@ export function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-1">
-            <Link
-              href="#features"
+            <button
+              onClick={() => scrollToSection("features")}
               className="relative px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full"
             >
               Features
-            </Link>
-            <Link
-              href="#how-it-works"
+            </button>
+            <button
+              onClick={() => scrollToSection("how-it-works")}
               className="relative px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full"
             >
               How it works
-            </Link>
-            <Link
-              href="#faq"
+            </button>
+            <button
+              onClick={() => scrollToSection("faq")}
               className="relative px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full"
             >
               FAQ
-            </Link>
+            </button>
             <Button
               onClick={scrollToWaitlist}
               size="sm"
@@ -101,27 +105,24 @@ export function Navbar() {
             className="md:hidden mt-2 mx-2 mb-2 rounded-2xl border border-border bg-background/95 backdrop-blur-xl"
           >
             <div className="px-6 py-4 space-y-2">
-              <Link
-                href="#features"
-                className="block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button
+                onClick={() => scrollToSection("features")}
+                className="block w-full text-left px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
               >
                 Features
-              </Link>
-              <Link
-                href="#how-it-works"
-                className="block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+              </button>
+              <button
+                onClick={() => scrollToSection("how-it-works")}
+                className="block w-full text-left px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
               >
                 How it works
-              </Link>
-              <Link
-                href="#faq"
-                className="block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+              </button>
+              <button
+                onClick={() => scrollToSection("faq")}
+                className="block w-full text-left px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
               >
                 FAQ
-              </Link>
+              </button>
               <Button
                 onClick={scrollToWaitlist}
                 className="w-full mt-2 rounded-lg"
