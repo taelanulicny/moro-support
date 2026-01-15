@@ -14,7 +14,7 @@ export default function BriefingPage() {
         <Card>
           <CardHeader>
             <CardTitle>Today</CardTitle>
-            <CardDescription>Summary of today's activity</CardDescription>
+            <CardDescription>Summary of today&apos;s activity</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -28,7 +28,7 @@ export default function BriefingPage() {
         <Card>
           <CardHeader>
             <CardTitle>Trending</CardTitle>
-            <CardDescription>What's gaining momentum</CardDescription>
+            <CardDescription>What&apos;s gaining momentum</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useRouter } from "next/navigation"
 import {
   Table,
@@ -49,7 +49,7 @@ export function WaitlistTable() {
   const [search, setSearch] = useState("")
   const [stats, setStats] = useState({ total: 0, referred: 0 })
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true)
     try {
       const [data, statsData] = await Promise.all([
@@ -69,11 +69,11 @@ export function WaitlistTable() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [page, search, toast])
 
   useEffect(() => {
     loadData()
-  }, [page])
+  }, [loadData])
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -84,7 +84,7 @@ export function WaitlistTable() {
       }
     }, 500)
     return () => clearTimeout(timeoutId)
-  }, [search])
+  }, [search, page, loadData])
 
   const handleDelete = async (id: string) => {
     if (!confirm("Are you sure you want to delete this entry?")) {

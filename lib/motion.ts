@@ -181,7 +181,7 @@ export const conditionalAnimation = <T extends Variants>(
     return {
       hidden: {},
       visible: {},
-    } as T
+    } as unknown as T
   }
   return variants
 }

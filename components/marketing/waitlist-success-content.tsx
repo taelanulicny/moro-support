@@ -71,9 +71,9 @@ export function WaitlistSuccessContent() {
             >
               <Check className="w-8 h-8 text-primary" />
             </motion.div>
-            <CardTitle className="text-3xl">You're on the waitlist!</CardTitle>
+            <CardTitle className="text-3xl">You&apos;re on the waitlist!</CardTitle>
             <p className="text-muted-foreground mt-2">
-              We'll notify you when Moro launches. Share your referral link to
+              We&apos;ll notify you when Moro launches. Share your referral link to
               move up in line.
             </p>
           </CardHeader>
@@ -142,7 +142,7 @@ export function WaitlistSuccessContent() {
                 {referralCount > 0 && (
                   <div className="bg-secondary rounded-lg p-4">
                     <p className="text-sm text-muted-foreground">
-                      People you've referred
+                      People you&apos;ve referred
                     </p>
                     <p className="text-2xl font-bold">{referralCount}</p>
                   </div>
