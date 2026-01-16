@@ -13,6 +13,7 @@ datasource db {
 model WaitlistEntry {
   id            String   @id @default(cuid())
   email         String   @unique
+  phoneNumber   String?
   fullName      String?
   role          String?
   company       String?

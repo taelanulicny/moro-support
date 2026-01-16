@@ -1,16 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import { submitWaitlist } from "@/app/actions/waitlist"
 import { useToast } from "@/components/ui/use-toast"
 import { Loader2 } from "lucide-react"
@@ -21,9 +14,8 @@ export function WaitlistForm() {
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     email: "",
+    phoneNumber: "",
     fullName: "",
-    role: "",
-    company: "",
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -35,9 +27,8 @@ export function WaitlistForm() {
       
       const result = await submitWaitlist({
         email: formData.email,
+        phoneNumber: formData.phoneNumber || undefined,
         fullName: formData.fullName || undefined,
-        role: (formData.role as any) || undefined,
-        company: formData.company || undefined,
         referralCode: refCode || undefined,
       })
 
@@ -86,37 +77,20 @@ export function WaitlistForm() {
         disabled={loading}
       />
       <Input
+        type="tel"
+        placeholder="Phone number (optional)"
+        value={formData.phoneNumber}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, phoneNumber: e.target.value }))
+        }
+        disabled={loading}
+      />
+      <Input
         type="text"
         placeholder="Full name (optional)"
         value={formData.fullName}
         onChange={(e) =>
           setFormData((prev) => ({ ...prev, fullName: e.target.value }))
-        }
-        disabled={loading}
-      />
-      <Select
-        value={formData.role}
-        onValueChange={(value) =>
-          setFormData((prev) => ({ ...prev, role: value }))
-        }
-        disabled={loading}
-      >
-        <SelectTrigger>
-          <SelectValue placeholder="Role (optional)" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="Founder">Founder</SelectItem>
-          <SelectItem value="Operator">Operator</SelectItem>
-          <SelectItem value="Student">Student</SelectItem>
-          <SelectItem value="Other">Other</SelectItem>
-        </SelectContent>
-      </Select>
-      <Input
-        type="text"
-        placeholder="Company (optional)"
-        value={formData.company}
-        onChange={(e) =>
-          setFormData((prev) => ({ ...prev, company: e.target.value }))
         }
         disabled={loading}
       />

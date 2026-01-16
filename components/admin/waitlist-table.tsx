@@ -26,9 +26,8 @@ import { Search, Download, LogOut, Trash2, ChevronLeft, ChevronRight } from "luc
 type WaitlistEntry = {
   id: string
   email: string
+  phoneNumber: string | null
   fullName: string | null
-  role: string | null
-  company: string | null
   referralCode: string
   referralCount: number
   createdAt: Date
@@ -109,12 +108,11 @@ export function WaitlistTable() {
 
   const handleExport = () => {
     const csv = [
-      ["Email", "Name", "Role", "Company", "Referral Code", "Referred By", "Referrals", "Created At"],
+      ["Email", "Phone Number", "Name", "Referral Code", "Referred By", "Referrals", "Created At"],
       ...entries.map((e: WaitlistEntry) => [
         e.email,
+        e.phoneNumber || "",
         e.fullName || "",
-        e.role || "",
-        e.company || "",
         e.referralCode,
         e.referredBy?.email || "",
         e.referralCount.toString(),
@@ -201,7 +199,7 @@ export function WaitlistTable() {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
-                placeholder="Search by email, name, or company..."
+                placeholder="Search by email, phone, or name..."
                 value={search}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
                 className="pl-10"
@@ -224,9 +222,8 @@ export function WaitlistTable() {
                   <TableHeader>
                     <TableRow>
                       <TableHead>Email</TableHead>
+                      <TableHead>Phone Number</TableHead>
                       <TableHead>Name</TableHead>
-                      <TableHead>Role</TableHead>
-                      <TableHead>Company</TableHead>
                       <TableHead>Referral Code</TableHead>
                       <TableHead>Referred By</TableHead>
                       <TableHead>Referrals</TableHead>
@@ -238,15 +235,8 @@ export function WaitlistTable() {
                     {entries.map((entry: WaitlistEntry) => (
                       <TableRow key={entry.id}>
                         <TableCell className="font-medium">{entry.email}</TableCell>
+                        <TableCell>{entry.phoneNumber || "-"}</TableCell>
                         <TableCell>{entry.fullName || "-"}</TableCell>
-                        <TableCell>
-                          {entry.role ? (
-                            <Badge variant="secondary">{entry.role}</Badge>
-                          ) : (
-                            "-"
-                          )}
-                        </TableCell>
-                        <TableCell>{entry.company || "-"}</TableCell>
                         <TableCell className="font-mono text-xs">
                           {entry.referralCode}
                         </TableCell>

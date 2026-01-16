@@ -6,9 +6,8 @@ import { revalidatePath } from "next/cache"
 
 const waitlistSchema = z.object({
   email: z.string().email("Invalid email address"),
+  phoneNumber: z.string().optional(),
   fullName: z.string().optional(),
-  role: z.enum(["Founder", "Operator", "Student", "Other"]).optional(),
-  company: z.string().optional(),
   referralCode: z.string().optional(),
   source: z.string().optional(),
   utmSource: z.string().optional(),
@@ -53,9 +52,8 @@ export async function submitWaitlist(formData: WaitlistFormData) {
     const entry = await prisma.waitlistEntry.create({
       data: {
         email: validated.email,
+        phoneNumber: validated.phoneNumber,
         fullName: validated.fullName,
-        role: validated.role,
-        company: validated.company,
         source: validated.source,
         utmSource: validated.utmSource,
         utmMedium: validated.utmMedium,

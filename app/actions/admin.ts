@@ -42,8 +42,8 @@ export async function getWaitlistEntries(
         deletedAt: null,
         OR: [
           { email: { contains: search, mode: "insensitive" as const } },
+          { phoneNumber: { contains: search, mode: "insensitive" as const } },
           { fullName: { contains: search, mode: "insensitive" as const } },
-          { company: { contains: search, mode: "insensitive" as const } },
         ],
       }
     : {
