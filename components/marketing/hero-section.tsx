@@ -59,7 +59,7 @@ export function HeroSection() {
                 animate="visible"
                 custom={0}
               >
-                Quantifying{" "}
+                Quantifying
               </motion.span>
               <motion.span
                 className="inline-block text-primary"
@@ -68,7 +68,7 @@ export function HeroSection() {
                 animate="visible"
                 custom={1}
               >
-                Public Opinion
+                {" "}Public Opinion
               </motion.span>
             </h2>
 
