@@ -52,28 +52,24 @@ export function HeroSection() {
 
             {/* Tagline */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif leading-tight tracking-tight">
-              <span className="block overflow-hidden">
-                <motion.span
-                  className="block"
-                  variants={textReveal}
-                  initial="hidden"
-                  animate="visible"
-                  custom={0}
-                >
-                  Quantifying Public
-                </motion.span>
-              </span>
-              <span className="block overflow-hidden">
-                <motion.span
-                  className="block text-primary"
-                  variants={textReveal}
-                  initial="hidden"
-                  animate="visible"
-                  custom={1}
-                >
-                  Opinion
-                </motion.span>
-              </span>
+              <motion.span
+                className="inline-block"
+                variants={textReveal}
+                initial="hidden"
+                animate="visible"
+                custom={0}
+              >
+                Quantifying{" "}
+              </motion.span>
+              <motion.span
+                className="inline-block text-primary"
+                variants={textReveal}
+                initial="hidden"
+                animate="visible"
+                custom={1}
+              >
+                Public Opinion
+              </motion.span>
             </h2>
 
             <motion.p
