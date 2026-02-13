@@ -76,9 +76,11 @@ export function HeroSection() {
               className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
               variants={fadeUp}
             >
-              Moro is a social stock market where people, ideas, trends, and
-              narratives are traded based on what the crowd believes will matter
-              more in the future. Build your portfolio of conviction.
+              Moro is a social-media platform that quantifies public opinion in
+              any entity, including people, sports teams, companies, and more.
+              By aggregating user opinions into a score for each entity, Moro
+              creates a new informational layer: a continuous, numerical
+              measure of the public's opinion.
             </motion.p>
 
             <motion.div
