@@ -80,7 +80,7 @@ export function HeroSection() {
               any entity, including people, sports teams, companies, and more.
               By aggregating user opinions into a score for each entity, Moro
               creates a new informational layer: a continuous, numerical
-              measure of the public's opinion.
+              measure of the public&apos;s opinion.
             </motion.p>
 
             <motion.div
