@@ -50,25 +50,15 @@ export function HeroSection() {
               Moro
             </motion.h1>
 
-            {/* Tagline */}
+            {/* Tagline - single line so space between Quantifying and Public never collapses */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif leading-tight tracking-tight">
               <motion.span
                 className="inline-block"
                 variants={textReveal}
                 initial="hidden"
                 animate="visible"
-                custom={0}
               >
-                Quantifying
-              </motion.span>
-              <motion.span
-                className="inline-block text-primary"
-                variants={textReveal}
-                initial="hidden"
-                animate="visible"
-                custom={1}
-              >
-                {" "}Public Opinion
+                Quantifying <span className="text-primary">Public Opinion</span>
               </motion.span>
             </h2>
 
